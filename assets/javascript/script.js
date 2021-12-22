@@ -14,28 +14,24 @@ var timerInterval = setInterval(function () {
     currentTime.textContent = actualTime;
 }, 1000);
 
-// function for changing input column color
-var workHour = document.getElementById('9AM');
-
-
 var colorChange = function () {
 
     // Obtain current time
-    var currentHour = moment().format('H');
+    var currentHour = moment().format('HH');
 
-    // Target correct child element
+    // Target all input elements
 
-    var inputElements = $("input");
+    var inputElements = $(".description");
 
-    // looping through all class input areas
+    // looping through all input element areas
     for (var i = 0; i < inputElements.length; i++) {
 
-        // get parent element ID as strings
-        var elementID = inputElements[i];
+        // get each elements ID as a string
+        var elementID = inputElements[i].id;
 
         // obtain each element by ID
 
-        var morphID = document.getElementById(inputElements[i].id)
+        var morphID = document.getElementById(inputElements[i].id);
 
         // clear old styling
         $(inputElements[i].id).removeClass(".present .past .future");
@@ -46,14 +42,14 @@ var colorChange = function () {
             $(morphID).addClass("past");
         }
     
-        else if (elementID = currentHour) {
-            $(morphID).addClass("present")
+        else if (elementID > currentHour) {
+            $(morphID).addClass("future");
         }
     
         else {
-            $(morphID).addClass("future")
+            $(morphID).addClass("present");
         }
     }
 };
 
-setInterval(colorChange(), 1000);
+setInterval(colorChange(), 1000 * 5);
