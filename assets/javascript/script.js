@@ -53,3 +53,68 @@ var colorChange = function () {
 };
 
 setInterval(colorChange(), 1000 * 5);
+
+// Save buttons that save text input to local storage
+var nineTextArea = localStorage.getItem("nine-text");
+$("#09").val(nineTextArea);
+$("#09Submit").on("click", () => {
+    var inputText = $("#09").val();
+    localStorage.setItem("nine-text", inputText);
+    console.log(newText);
+});
+var tenTextArea = localStorage.getItem("ten-text");
+$("#10").val(tenTextArea);
+$("#10Submit").on("click", () => {
+    var inputText = $("#10").val();
+    localStorage.setItem("ten-text", inputText);
+    console.log(newText);
+});
+var elevenTextArea = localStorage.getItem("eleven-text");
+$("#11").val(elevenTextArea);
+$("#11Submit").on("click", () => {
+    var inputText = $("#11").val();
+    localStorage.setItem("eleven-text", inputText);
+    console.log(newText);
+});
+var twelveTextArea = localStorage.getItem("twelve-text");
+$("#12").val(twelveTextArea);
+$("#12Submit").on("click", () => {
+    var inputText = $("#12").val();
+    localStorage.setItem("twelve-text", inputText);
+    console.log(newText);
+});
+var thirteenTextArea = localStorage.getItem("thirteen-text");
+$("#13").val(thirteenTextArea);
+$("#13Submit").on("click", () => {
+    var inputText = $("#13").val();
+    localStorage.setItem("thirteen-text", inputText);
+    console.log(newText);
+});
+var fourteenTextArea = localStorage.getItem("fourteen-text");
+$("#14").val(fourteenTextArea);
+$("#14Submit").on("click", () => {
+    var inputText = $("#14").val();
+    localStorage.setItem("fourteen-text", inputText);
+    console.log(newText);
+});
+var fifteenTextArea = localStorage.getItem("fifteen-text");
+$("#15").val(fifteenTextArea);
+$("#15Submit").on("click", () => {
+    var inputText = $("#15").val();
+    localStorage.setItem("fifteen-text", inputText);
+    console.log(newText);
+});
+var sixteenTextArea = localStorage.getItem("sixteen-text");
+$("#16").val(sixteenTextArea);
+$("#16Submit").on("click", () => {
+    var inputText = $("#16").val();
+    localStorage.setItem("sixteen-text", inputText);
+    console.log(newText);
+});
+var seventeenTextArea = localStorage.getItem("seventeen-text");
+$("#17").val(seventeenTextArea);
+$("#17Submit").on("click", () => {
+    var inputText = $("#17").val();
+    localStorage.setItem("seventeen-text", inputText);
+    console.log(newText);
+});
