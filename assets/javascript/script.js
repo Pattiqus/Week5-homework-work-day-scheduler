@@ -5,9 +5,6 @@ var currentTime = document.getElementById('dynamiClock');
 var actualDate = moment().format("dddd Do MMMM , YYYY");
     currentDate.textContent = actualDate;
 
-// variable for obtaining current time
-var actualTime = moment().format("LTS");
-
 // Function for displaying current time to HTML which updates dynamically
 var timerInterval = setInterval(function () {
     var actualTime = moment().format("LTS");
@@ -54,67 +51,68 @@ var colorChange = function () {
 
 setInterval(colorChange(), 1000 * 5);
 
-// Save buttons that save text input to local storage
-var nineTextArea = localStorage.getItem("nine-text");
-$("#09").val(nineTextArea);
-$("#09Submit").on("click", () => {
-    var inputText = $("#09").val();
-    localStorage.setItem("nine-text", inputText);
-    console.log(newText);
-});
-var tenTextArea = localStorage.getItem("ten-text");
-$("#10").val(tenTextArea);
-$("#10Submit").on("click", () => {
-    var inputText = $("#10").val();
-    localStorage.setItem("ten-text", inputText);
-    console.log(newText);
-});
-var elevenTextArea = localStorage.getItem("eleven-text");
-$("#11").val(elevenTextArea);
-$("#11Submit").on("click", () => {
-    var inputText = $("#11").val();
-    localStorage.setItem("eleven-text", inputText);
-    console.log(newText);
-});
-var twelveTextArea = localStorage.getItem("twelve-text");
-$("#12").val(twelveTextArea);
-$("#12Submit").on("click", () => {
-    var inputText = $("#12").val();
-    localStorage.setItem("twelve-text", inputText);
-    console.log(newText);
-});
-var thirteenTextArea = localStorage.getItem("thirteen-text");
-$("#13").val(thirteenTextArea);
-$("#13Submit").on("click", () => {
-    var inputText = $("#13").val();
-    localStorage.setItem("thirteen-text", inputText);
-    console.log(newText);
-});
-var fourteenTextArea = localStorage.getItem("fourteen-text");
-$("#14").val(fourteenTextArea);
-$("#14Submit").on("click", () => {
-    var inputText = $("#14").val();
-    localStorage.setItem("fourteen-text", inputText);
-    console.log(newText);
-});
-var fifteenTextArea = localStorage.getItem("fifteen-text");
-$("#15").val(fifteenTextArea);
-$("#15Submit").on("click", () => {
-    var inputText = $("#15").val();
-    localStorage.setItem("fifteen-text", inputText);
-    console.log(newText);
-});
-var sixteenTextArea = localStorage.getItem("sixteen-text");
-$("#16").val(sixteenTextArea);
-$("#16Submit").on("click", () => {
-    var inputText = $("#16").val();
-    localStorage.setItem("sixteen-text", inputText);
-    console.log(newText);
-});
-var seventeenTextArea = localStorage.getItem("seventeen-text");
-$("#17").val(seventeenTextArea);
-$("#17Submit").on("click", () => {
-    var inputText = $("#17").val();
-    localStorage.setItem("seventeen-text", inputText);
-    console.log(newText);
-});
+
+/**
+ * Function: setCalendarValues()
+ */
+var setCalendarValues = function() {
+    // # Retrieve: Each time Input
+    var timeInputs = $('input.time-input');
+
+    // # Loop: Through each time input
+    for( var curentInput = 0, totalTimeInputs = timeInputs.length; curentInput < totalTimeInputs; curentInput++ ) {
+
+        // # Define: Current TIme Input
+        var currentTimeInput = $( timeInputs[ curentInput ] );
+        // # Retrieve: Identifier
+        var timeIdentifier = currentTimeInput.attr('data-time-identifier');
+        
+        // # Retrieve: Value from Local Storage
+        var localStorageValue = localStorage.getItem( timeIdentifier );
+
+        // # Set: Value
+        currentTimeInput.val( localStorageValue );
+    }
+};
+
+setCalendarValues();
+
+/**
+ *  Function: timeInputClickFunction
+ *  Description: Function for saving to localStorage dynamically
+ * 
+ */
+var timeInputClickFunction = function( clickEvent ) {
+
+    // # Define: Current Time Input
+    var currentSubmit = $( this );
+
+    // # Define: Input 
+    var currentInput = currentSubmit.siblings('input.time-input');
+
+    // # Retrieve: Current Value
+    var inputValue = currentInput.val();
+
+    // # Retrieve: Storage Identifier for input
+    var currentInputIdentifier = currentInput.attr('data-time-identifier');
+
+    // # Set: Local Storage
+    localStorage.setItem(currentInputIdentifier, inputValue);
+
+};
+
+
+/**
+ *  Loop: Through each button and bind event listener
+ */
+var submitButtons = $('button.saveBtn');
+for( var submit = 0, totalSubmits = submitButtons.length; submit < totalSubmits; submit++ ) {
+
+    // # Define: Current submit button in the loop
+    var currentSubmitButton = $( submitButtons[ submit ] );
+
+    // # Bind: Function to submit button
+    currentSubmitButton.on('click', timeInputClickFunction);
+
+}
+
