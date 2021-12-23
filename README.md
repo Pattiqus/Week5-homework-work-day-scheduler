@@ -22,7 +22,7 @@ Using moment.js & Javascript the page dynamically changes the colours of the inp
 <br/>
 <h2>URL:</h2>
 
-https://pattiqus.github.io/Week-4-coding-pop-quiz/
+https://pattiqus.github.io/Week5-homework-work-day-scheduler/
 
 <h2>Screenshot:</h2>
 
